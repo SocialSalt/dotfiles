@@ -165,11 +165,20 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
+      sections = {
+        lualine_c = {
+          {
+            'filename',
+            file_status = true,
+            path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
+          }
+        }
+      }
     },
   },
 
@@ -273,12 +282,6 @@ vim.o.termguicolors = true
 
 -- set scrolloff (min lines above or below cursor
 vim.opt.scrolloff = 12
-
--- set tab things
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
--- vim.bo.softtabstop = 2
 
 -- [[ Basic Keymaps ]]
 
