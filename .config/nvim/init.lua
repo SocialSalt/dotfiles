@@ -283,6 +283,9 @@ vim.o.termguicolors = true
 -- set scrolloff (min lines above or below cursor
 vim.opt.scrolloff = 12
 
+-- set relative line numbering
+vim.opt.relativenumber = true
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
