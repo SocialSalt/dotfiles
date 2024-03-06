@@ -286,6 +286,9 @@ vim.opt.scrolloff = 12
 -- set relative line numbering
 vim.opt.relativenumber = true
 
+-- set tabstop
+vim.opt.tabstop = 4
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
