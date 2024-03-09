@@ -175,10 +175,20 @@ require('lazy').setup({
           {
             'filename',
             file_status = true,
-            path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
+            path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path,
+          },
+          {
+            function()
+              for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                if vim.api.nvim_buf_get_option(buf, 'modified') then
+                  return '󱒺'
+                end
+              end
+              return ''
+            end,
           }
-        }
-      }
+        },
+      },
     },
   },
 
