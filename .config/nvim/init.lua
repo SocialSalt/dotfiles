@@ -150,14 +150,86 @@ require('lazy').setup({
     },
   },
 
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
+  -- {
+  --   "oxfist/night-owl.nvim",
+  --   lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     -- load the colorscheme here
+  --     vim.cmd.colorscheme("night-owl")
+  --   end,
+  -- },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   priority = 1000,
+  --   config = true,
+  --   opts = {},
+  --   config = function()
+  --     -- load the colorscheme here
+  --     vim.cmd.colorscheme("gruvbox")
+  --   end,
+  -- },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function()
+  --     -- load the colorscheme here
+  --     vim.cmd.colorscheme("tokyonight")
+  --   end,
+  -- },
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    "EdenEast/nightfox.nvim",
+    lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      -- load the colorscheme here
+      require('nightfox').setup({
+        options = {
+          styles = {
+            comments = "italic",
+            keywords = "bold",
+            types = "italic,bold",
+          }
+        },
+        palettes = {
+          nightfox = {
+            bg1 = "#000000",
+            bg0 = "#222222",
+            green = "#ACDB66",
+            red = "#C93E3C",
+            blue = "#769BE8",
+            purple = "#B383D1",
+            cyan = "#78CEBE",
+            orange = "#E48064",
+            comment = "#505957",
+          }
+        },
+        specs = {},
+        groups = {},
+      })
+      vim.cmd.colorscheme("nightfox")
     end,
   },
+  -- {
+  --   "nyoom-engineering/oxocarbon.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function()
+  --     -- load the colorscheme here
+  --     vim.cmd.colorscheme("oxocarbon")
+  --   end,
+  -- },
 
   {
     -- Set lualine as statusline
@@ -166,7 +238,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
+        theme = 'nightfox',
         component_separators = '|',
         section_separators = '',
       },
