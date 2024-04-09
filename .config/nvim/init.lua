@@ -322,7 +322,7 @@ require('lazy').setup({
 }, {})
 
 
- -- [[ Import Options Configurations ]]
+-- [[ Import Options Configurations ]]
 require('config.vim_options')
 
 -- [[ Import Custom Commands ]]
@@ -339,7 +339,25 @@ require('telescope').setup {
         ['<C-d>'] = false,
       },
     },
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden',
+      '--glob', -- this flag allows you to hide exclude these files and folders from your search 👇
+      '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,**/poetry.lock}',
+      -- '-uu' -- thats the new thing
+    },
   },
+  pickers = {
+    find_files = {
+      hidden = true
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
