@@ -43,7 +43,7 @@ vim.o.termguicolors = true
 vim.opt.scrolloff = 12
 
 -- set relative line numbering
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- set tabstop
 vim.opt.tabstop = 4
