@@ -48,6 +48,9 @@ vim.opt.relativenumber = false
 -- set tabstop
 vim.opt.tabstop = 4
 
+-- search highlight
+vim.opt.hlsearch = true
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
