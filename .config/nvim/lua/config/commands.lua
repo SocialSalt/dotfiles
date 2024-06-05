@@ -23,4 +23,6 @@ vim.api.nvim_create_user_command("LSB", function()
 end, {})
 
 
--- vim.api.nvim_create_user_command("DAP")
+vim.api.nvim_create_user_command("E", function()
+  vim.api.nvim_command("Explore")
+end, {})
