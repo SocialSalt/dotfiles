@@ -1,0 +1,32 @@
+return { -- TODO: worse than mini?
+  -- -- Set lualine as statusline
+  -- 'nvim-lualine/lualine.nvim',
+  -- -- See `:help lualine.txt`
+  -- opts = {
+  --   options = {
+  --     icons_enabled = true,
+  --     theme = 'nightfox',
+  --     component_separators = '|',
+  --     section_separators = '',
+  --   },
+  --   sections = {
+  --     lualine_c = {
+  --       {
+  --         'filename',
+  --         file_status = true,
+  --         path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path,
+  --       },
+  --       -- {
+  --       --   function()
+  --       --     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+  --       --       if vim.api.nvim_buf_get_option(buf, 'modified') then
+  --       --         return '󱒺'
+  --       --       end
+  --       --     end
+  --       --     return ''
+  --       --   end,
+  --       -- }
+  --     },
+  --   },
+  -- },
+}
