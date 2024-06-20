@@ -388,36 +388,34 @@ require('lazy').setup({
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+      local telescope_config = require 'telescope.config'
+      -- Clone the default Telescope configuration
+      local vimgrep_arguments = { unpack(telescope_config.values.vimgrep_arguments) }
+
+      table.insert(vimgrep_arguments, '--hidden')
+      table.insert(vimgrep_arguments, '--glob')
+      table.insert(vimgrep_arguments, '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,**/poetry.lock}')
+
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
-        -- defaults = {
-        --   mappings = {
-        --     -- i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --     i = {
-        --       ['<C-u>'] = false,
-        --       ['<C-d>'] = false,
-        --     },
-        --   },
-        --   vimgrep_arguments = {
-        --     'rg',
-        --     '--color=never',
-        --     '--no-heading',
-        --     '--with-filename',
-        --     '--line-number',
-        --     '--column',
-        --     '--smart-case',
-        --     '--hidden',
-        --     '--glob', -- this flag allows you to hide exclude these files and folders from your search 👇 -- FIXME: this may need to change
-        --     '!{**/.git/*,**/node_modules/*,**/package-lock.json,**/yarn.lock,**/poetry.lock}',
-        --     -- '-uu' -- thats the new thing
-        --   },
-        -- },
-        -- pickers = {
-        --   find_files = {
-        --     hidden = true
-        --   }
-        -- },
+        defaults = {
+          mappings = {
+            -- i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+            i = {
+              ['<C-u>'] = false,
+              ['<C-d>'] = false,
+            },
+          },
+          vimgrep_arguments = vimgrep_arguments,
+          file_ignore_patterns = { '^.git/' },
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
+            -- find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
