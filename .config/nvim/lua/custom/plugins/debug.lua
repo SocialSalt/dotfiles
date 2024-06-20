@@ -94,8 +94,12 @@ return {
       },
     }
 
+    local dap_go = require 'dap-go'
+
+    vim.keymap.set('n', '<leader>tg', dap_go.debug_test, { desc = 'dap [T]est [G]o function' })
+
     -- Install python specific config
-    require('dap-python').setup("python")
+    require('dap-python').setup 'python'
     require('dap-python').test_runner = 'pytest'
   end,
 }
