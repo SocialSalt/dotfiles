@@ -279,7 +279,7 @@ require('lazy').setup({
         delay = 50,
         -- virt_text = false,
       },
-      current_line_blame_formatter = '\t\t\t\t\t\t\t\t<author>, <author_time:%Y-%m-%d> - <summary>',
+      current_line_blame_formatter = '\t\t<author>, <author_time:%Y-%m-%d> - <summary>',
     },
   },
 
