@@ -274,10 +274,12 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+      watch_gitdir = {
+        follow_files = true,
+      },
       current_line_blame = true,
       current_line_blame_opts = {
         delay = 50,
-        -- virt_text = false,
       },
       current_line_blame_formatter = '\t\t<author>, <author_time:%Y-%m-%d> - <summary>',
     },
