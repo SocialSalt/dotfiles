@@ -99,7 +99,9 @@ return {
     vim.keymap.set('n', '<leader>tg', dap_go.debug_test, { desc = 'dap [T]est [G]o function' })
 
     -- Install python specific config
-    require('dap-python').setup 'python'
-    require('dap-python').test_runner = 'pytest'
+    local dap_python = require 'dap-python'
+    dap_python.setup 'python'
+    dap_python.test_runner = 'pytest'
+    vim.keymap.set('n', '<leader>tp', dap_python.test_method, { desc = 'dap [T]est [P]ython function' })
   end,
 }
