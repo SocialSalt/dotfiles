@@ -3,3 +3,7 @@
 .DS_Store
 .config/darktable
 .config/kickstart*
+.config/atuin
+.config/techcyte-cli
+.config/thefuck
+.config/wandb
