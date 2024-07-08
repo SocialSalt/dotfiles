@@ -28,15 +28,15 @@ vim.api.nvim_create_user_command('E', function()
   vim.api.nvim_command 'Explore'
 end, {})
 
-vim.api.nvim_create_autocmd('BufLeave', {
-  desc = 'Autosave buffer when leaving buffer window',
-  group = vim.api.nvim_create_augroup('autosave', { clear = true }),
-  callback = function(event)
-    if vim.api.nvim_get_option_value('modified', { buf = event.buf }) then
-      vim.api.nvim_command 'w'
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd('BufLeave', {
+--   desc = 'Autosave buffer when leaving buffer window',
+--   group = vim.api.nvim_create_augroup('autosave', { clear = true }),
+--   callback = function(event)
+--     if vim.api.nvim_get_option_value('modified', { buf = event.buf }) then
+--       vim.api.nvim_command 'w'
+--     end
+--   end,
+-- })
 
 --  Reload LSP if file is renamed
 vim.api.nvim_create_user_command('LR', function()
