@@ -1,0 +1,9 @@
+global_excludes:
+- .git
+- target
+- __pyenv__
+- .DS_Store
+
+repos:
+  - name: reposync
+    exclues: ["*.yaml", "LICENSE"]
