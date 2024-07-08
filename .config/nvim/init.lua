@@ -167,7 +167,7 @@ vim.opt.shiftwidth = 4
 -- vim.o.completeopt = 'menuone,noselect'
 
 -- [[ Import Custom Commands ]]
-require 'config.commands'
+require 'custom.commands'
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
