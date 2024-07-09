@@ -367,6 +367,12 @@ require("lazy").setup({
               cterm_color = "75",
               name = "go",
             },
+            rs = {
+              icon = "",
+              name = "rs",
+              color = "#F74C00",
+              cterm_color = "166",
+            },
           })
         end,
       },
