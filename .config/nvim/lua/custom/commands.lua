@@ -53,10 +53,3 @@ vim.api.nvim_create_autocmd("BufLeave", {
     end
   end,
 })
-
---  Reload LSP if file is renamed
-vim.api.nvim_create_user_command("LR", function()
-  local buffnr = vim.api.nvim_get_current_buf()
-  vim.lsp.stop_client(vim.lsp.get_clients({ buffnr = buffnr }))
-  vim.api.nvim_command("e")
-end, {})
