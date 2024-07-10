@@ -19,7 +19,9 @@ return {
         {
           function()
             for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-              if vim.api.nvim_get_option_value("modified", { buf = buf }) then
+              local is_modified = vim.api.nvim_get_option_value("modified", { buf = buf })
+              local is_file = BufIsFile(buf)
+              if is_modified and is_file then
                 return "[~]"
               end
             end
