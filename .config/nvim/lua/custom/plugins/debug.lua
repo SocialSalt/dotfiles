@@ -43,6 +43,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         "delve",
+        "pytest",
       },
     })
 
@@ -82,8 +83,8 @@ return {
     vim.keymap.set("n", "<F7>", dapui.toggle, { desc = "Debug: See last session result." })
 
     dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-    dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-    dap.listeners.before.event_exited["dapui_config"] = dapui.close
+    -- dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+    -- dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
     -- Install golang specific config
     require("dap-go").setup({
@@ -95,7 +96,6 @@ return {
     })
 
     local dap_go = require("dap-go")
-
     vim.keymap.set("n", "<leader>tg", dap_go.debug_test, { desc = "dap [T]est [G]o function" })
 
     -- Install python specific config

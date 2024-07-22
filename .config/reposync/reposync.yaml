@@ -7,3 +7,5 @@ global_excludes:
 repos:
   - name: reposync
     exclues: ["*.yaml", "LICENSE"]
+  - name: pramana-inline-algorithm.yaml
+    excludes: [".venv"]

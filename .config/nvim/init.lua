@@ -208,6 +208,10 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- [[ golang specific keymap ]]
 vim.keymap.set("n", "<leader>en", "iif err != nil {}<Esc>", { desc = "Insert if err != nil {}" })
 
+-- [[ Spellcheck keymap ]]
+vim.keymap.set("n", "<leader>sc", ":setlocal spell spelllang=en_us<CR>", { desc = "Turn on spell check for current buffer" })
+vim.keymap.set("n", "<leader>ns", ":setlocal spell!<CR>", { desc = "Turn on spell check for current buffer" })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
