@@ -907,6 +907,8 @@ require("lazy").setup({
             ["if"] = "@function.inner",
             ["ac"] = "@class.outer",
             ["ic"] = "@class.inner",
+            ["ib"] = "@block.inner",
+            ["ab"] = "@block.outer",
           },
         },
         move = {
@@ -915,18 +917,22 @@ require("lazy").setup({
           goto_next_start = {
             ["]m"] = "@function.outer",
             ["]]"] = "@class.outer",
+            ["]b"] = "@block.outer",
           },
           goto_next_end = {
             ["]M"] = "@function.outer",
             ["]["] = "@class.outer",
+            ["]B"] = "@block.outer",
           },
           goto_previous_start = {
             ["[m"] = "@function.outer",
             ["[["] = "@class.outer",
+            ["[b"] = "@block.outer",
           },
           goto_previous_end = {
             ["[M"] = "@function.outer",
             ["[]"] = "@class.outer",
+            ["[B"] = "@block.outer",
           },
         },
         swap = {
