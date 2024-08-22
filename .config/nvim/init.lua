@@ -882,6 +882,7 @@ require("lazy").setup({
         "typescript",
         "javascript",
         "go",
+        "zig",
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
@@ -956,8 +957,8 @@ require("lazy").setup({
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
-      -- Prefer git instead of curl in order to improve connectivity in some environments
-      require("nvim-treesitter.install").prefer_git = true
+      -- -- Prefer git instead of curl in order to improve connectivity in some environments
+      -- require("nvim-treesitter.install").prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require("nvim-treesitter.configs").setup(opts)
 
@@ -968,6 +969,9 @@ require("lazy").setup({
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
