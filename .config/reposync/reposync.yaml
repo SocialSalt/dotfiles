@@ -1,7 +1,7 @@
 global_excludes:
 - .git
 - target
-- __pyenv__
+- __pycache__
 - .DS_Store
 
 repos:
