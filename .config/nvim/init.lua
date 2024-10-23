@@ -727,7 +727,7 @@ require("lazy").setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 500,
+          timeout_ms = 2500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
@@ -810,7 +810,7 @@ require("lazy").setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          -- ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
           ["<Tab>"] = cmp.mapping.confirm({ select = true }),
 
           -- If you prefer more traditional completion keymaps,

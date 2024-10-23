@@ -17,5 +17,15 @@ return {
     require("mini.surround").setup()
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
+    --
+    --
+    --
+    --
+    -- Mini Trailspace
+    local mini_trailspace = require("mini.trailspace")
+    mini_trailspace.setup()
+
+    vim.keymap.set("n", "<leader>tw", ":lua MiniTrailspace.trim()<CR>:w<CR>", { desc = "Trim trailing whitespace" })
+    vim.keymap.set("n", "<leader>tl", ":lua MiniTrailspace.trim_last_lines()<CR>:w<CR>", { desc = "Trim trailing empty lines" })
   end,
 }
