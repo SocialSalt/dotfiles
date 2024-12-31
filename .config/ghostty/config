@@ -6,7 +6,9 @@ font-feature = -dlig
 font-size = 16
 font-thicken = true
 bold-is-bright = true
-theme = "Nocturnal Winter"
+# theme = "Nocturnal Winter"
+# theme = "deep"
+theme = "Abernathy"
 macos-secure-input-indication = true
 # this is the default but I'm setting it anyway
 macos-option-as-alt = true
