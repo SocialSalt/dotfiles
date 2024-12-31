@@ -6,4 +6,9 @@ font-feature = -dlig
 font-size = 16
 font-thicken = true
 bold-is-bright = true
+theme = "Nocturnal Winter"
 macos-secure-input-indication = true
+# this is the default but I'm setting it anyway
+macos-option-as-alt = true
+# FIXME: need to determine if the following is good
+link-url = true
