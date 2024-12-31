@@ -1,0 +1,7 @@
+background = 111111
+font-family = "FiraCode Nerd Font Mono Ret"
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+font-size = 16
+font-thicken = true

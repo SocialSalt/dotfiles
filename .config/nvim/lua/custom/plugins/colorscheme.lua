@@ -4,7 +4,7 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
-    -- load the colorscheme here
+    -- load the color scheme here
     require("nightfox").setup({
       options = {
         styles = {
@@ -16,11 +16,12 @@ return {
         compile_file_suffix = "_compiled", -- Compiled file suffix
         transparent = false, -- Disable setting background
         terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
-        dim_inactive = false, -- Non focused panes set to alternative backgroung
+        dim_inactive = false, -- Non focused panes set to alternative background
       },
       palettes = {
         nightfox = {
-          bg1 = "#000000",
+          -- bg1 = "#111111",
+          bg1 = "#111111",
           bg0 = "#222222",
           green = "#ACDB66",
           red = "#C93E3C",
@@ -29,6 +30,7 @@ return {
           cyan = "#78CEBE",
           orange = "#E48064",
           comment = "#505957",
+          magenta = "#A679D9",
         },
       },
       specs = {
