@@ -5,3 +5,5 @@ font-feature = -liga
 font-feature = -dlig
 font-size = 16
 font-thicken = true
+bold-is-bright = true
+macos-secure-input-indication = true
