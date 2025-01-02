@@ -20,8 +20,8 @@ return {
       },
       palettes = {
         nightfox = {
+          bg1 = "#000000",
           -- bg1 = "#111111",
-          bg1 = "#111111",
           bg0 = "#222222",
           green = "#ACDB66",
           red = "#C93E3C",

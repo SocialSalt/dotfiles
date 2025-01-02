@@ -1,5 +1,9 @@
-background = 111111
+background = 000000
 font-family = "FiraCode Nerd Font Mono Ret"
+font-family-bold = "FiraCode Nerd Font Mono Bold"
+font-family-italic = "FiraCode Nerd Font Mono Italic"
+# NOTE: not sure the best way to set bold italic or if I need to
+# font-family-bold-italic = "FiraCode Nerd Font Mono Italic"
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
@@ -12,5 +16,4 @@ theme = "Abernathy"
 macos-secure-input-indication = true
 # this is the default but I'm setting it anyway
 macos-option-as-alt = true
-# FIXME: need to determine if the following is good
 link-url = true
