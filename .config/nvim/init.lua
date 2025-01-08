@@ -777,7 +777,7 @@ require("lazy").setup({
 
       vim.keymap.set("n", "<leader>l", function()
         lint.try_lint()
-      end, { desc = "Trigger linter" })
+      end, { desc = "Trigger [L]inter" })
     end,
   },
   { -- Autocompletion
