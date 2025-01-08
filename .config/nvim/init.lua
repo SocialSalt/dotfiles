@@ -206,11 +206,15 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- [[ golang specific keymap ]]
-vim.keymap.set("n", "<leader>en", "iif err != nil {}<Esc>", { desc = "Insert if err != nil {}" })
+vim.keymap.set("n", "<leader>en", "Aif err != nil {<CR><CR>}<Esc>ki<TAB><Esc>", { desc = "Insert if err != nil {}" })
 
 -- [[ Spellcheck keymap ]]
 vim.keymap.set("n", "<leader>sc", ":setlocal spell spelllang=en_us<CR>", { desc = "Turn on spell check for current buffer" })
-vim.keymap.set("n", "<leader>ns", ":setlocal spell!<CR>", { desc = "Turn on spell check for current buffer" })
+vim.keymap.set("n", "<leader>cs", ":setlocal spell!<CR>", { desc = "Turn on spell check for current buffer" })
+
+-- [[ swap line remap ]]
+vim.keymap.set("n", "<leader>m", "ddp", { desc = "Move current line one line down" })
+vim.keymap.set("n", "<leader>M", "ddkkp", { desc = "Move current line one line up" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
