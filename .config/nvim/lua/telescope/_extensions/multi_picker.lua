@@ -1,6 +1,6 @@
 return require("telescope").register_extension({
   setup = function(ext_config, config) end,
   exports = {
-    multi_picker = require("multi_picker").file_after_grep,
+    grep_after_file = require("multi_picker.custom_picker").grep_after_file,
   },
 })

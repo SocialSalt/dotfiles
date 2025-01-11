@@ -446,6 +446,9 @@ require("lazy").setup({
           ["ui-select"] = {
             require("telescope.themes").get_dropdown(),
           },
+          ["multi_picker"] = {
+            require("telescope").load_extension("multi_picker"),
+          },
         },
       })
 
@@ -465,6 +468,12 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
       vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+      vim.keymap.set(
+        "n",
+        "<leader>sc",
+        require("telescope").extensions.multi_picker.grep_after_file,
+        { desc = "[S]earch [C]ustom file <C-space> -> grep files" }
+      )
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<leader>/", function()
