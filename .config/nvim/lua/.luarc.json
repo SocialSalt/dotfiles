@@ -25,5 +25,6 @@
         "/Users/ethanwalker/.local/share/nvim/lazy/Comment.nvim/lua",
         "/Users/ethanwalker/.config/nvim/lua",
         "${3rd}/luv/library"
-    ]
+    ],
+    "completion.autoRequire": false
 }
