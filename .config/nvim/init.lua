@@ -165,7 +165,7 @@ vim.o.termguicolors = true
 
 -- set tabstop
 vim.o.tabstop = 4
-vim.o.shiftwidth = 4
+vim.o.shiftwidth = 0
 
 -- -- Set completeopt to have a better completion experience
 -- vim.o.completeopt = 'menuone,noselect'
@@ -219,12 +219,17 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set("n", "<leader>en", "Aif err != nil {<CR><CR>}<Esc>ki<TAB><Esc>", { desc = "Insert if err != nil {}" })
 
 -- [[ Spellcheck keymap ]]
-vim.keymap.set("n", "<leader>sc", ":setlocal spell spelllang=en_us<CR>", { desc = "Turn on spell check for current buffer" })
-vim.keymap.set("n", "<leader>cs", ":setlocal spell!<CR>", { desc = "Turn on spell check for current buffer" })
+vim.keymap.set("n", "<leader>sc", "<CMD>setlocal spell spelllang=en_us<CR>", { desc = "Turn on spell check for current buffer" })
+vim.keymap.set("n", "<leader>cs", "<CMD>setlocal spell!<CR>", { desc = "Turn on spell check for current buffer" })
 
 -- [[ swap line remap ]]
 vim.keymap.set("n", "<leader>m", "ddp", { desc = "Move current line one line down" })
 vim.keymap.set("n", "<leader>M", "ddkkp", { desc = "Move current line one line up" })
+
+-- [[ jq keymaps ]]
+vim.keymap.set("n", "<leader>jq", "<Cmd>%!jq<CR>", { desc = "format document with jq" })
+vim.keymap.set("v", "<leader>jq", ":'<,'>!jq | unexpand -t2<CR>", { desc = "format selection with jq using tabs" })
+vim.keymap.set("v", "<leader>jsq", ":'<,'>!jq<CR>", { desc = "format selection with jq (using spaces)" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -912,19 +917,19 @@ require("lazy").setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = "default",
+        -- preset = "default",
 
         -- NOTE: these don't actually take effect because preset = 'default'
         -- they are just here to remind me in case I need it
-        ["<Tab>"] = { "show_and_insert", "select_next" },
-        ["<S-Tab>"] = { "show_and_insert", "select_prev" },
+        -- ["<Tab>"] = { "show_and_insert", "select_next" },
+        -- ["<S-Tab>"] = { "show_and_insert", "select_prev" },
 
         ["<C-space>"] = { "show", "fallback" },
 
         ["<C-n>"] = { "select_next", "fallback" },
         ["<C-p>"] = { "select_prev", "fallback" },
-        ["<Right>"] = { "select_next", "fallback" },
-        ["<Left>"] = { "select_prev", "fallback" },
+        -- ["<Right>"] = { "select_next", "fallback" },
+        -- ["<Left>"] = { "select_prev", "fallback" },
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
 
@@ -1014,10 +1019,10 @@ require("lazy").setup({
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "<c-i>",
-          node_incremental = "<c-i>",
-          scope_incremental = "<c-s>",
-          node_decremental = "<M-i>",
+          init_selection = "<C-space>",
+          node_incremental = "<C-space>",
+          scope_incremental = "<C-s>",
+          node_decremental = "<M-space>",
         },
       },
       textobjects = {
