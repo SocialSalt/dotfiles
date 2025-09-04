@@ -362,7 +362,6 @@ require("lazy").setup({
   -- you do for a plugin at the top level, you can do for a dependency.
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
-
   { -- Fuzzy Finder (files, lsp, etc)
     "nvim-telescope/telescope.nvim",
     event = "VimEnter",
@@ -485,9 +484,9 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
       vim.keymap.set(
         "n",
-        "<leader>sc",
+        "<leader>sm",
         require("telescope").extensions.multi_picker.grep_after_file,
-        { desc = "[S]earch [C]ustom file <C-space> -> grep files" }
+        { desc = "[S]earch [M]ultipicker <C-space> -> grep files" }
       )
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -512,6 +511,21 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>sn", function()
         builtin.find_files({ cwd = vim.fn.stdpath("config") })
       end, { desc = "[S]earch [N]eovim files" })
+    end,
+  },
+  {
+    "jemag/telescope-diff.nvim",
+    dependencies = {
+      { "nvim-telescope/telescope.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("diff")
+      vim.keymap.set("n", "<leader>sC", function()
+        require("telescope").extensions.diff.diff_files({ hidden = true })
+      end, { desc = "Compare 2 files" })
+      vim.keymap.set("n", "<leader>sc", function()
+        require("telescope").extensions.diff.diff_current({ hidden = true })
+      end, { desc = "Compare file with current" })
     end,
   },
 
@@ -604,6 +618,10 @@ require("lazy").setup({
           --  the definition of its *type*, not where it was *defined*.
           map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 
+          -- WARN: This is not Goto Definition, this is Goto Declaration.
+          --  For example, in C this would take you to the header.
+          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
           map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
@@ -623,10 +641,6 @@ require("lazy").setup({
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
           map("K", vim.lsp.buf.hover, "Hover Documentation")
-
-          -- WARN: This is not Goto Definition, this is Goto Declaration.
-          --  For example, in C this would take you to the header.
-          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -741,8 +755,11 @@ require("lazy").setup({
               completion = {
                 callSnippet = "Replace",
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = {
+                globals = { "vim" },
+                -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+                disable = { "missing-fields" },
+              },
             },
           },
         },
@@ -827,6 +844,7 @@ require("lazy").setup({
         typescript = { "prettierd" },
         javascriptreact = { "prettierd" },
         typescriptreact = { "prettierd" },
+        markdown = { "mdformat" },
       },
     },
   },

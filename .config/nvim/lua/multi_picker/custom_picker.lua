@@ -176,7 +176,7 @@ custom_picker.grep_after_file = function(opts)
       previewer = conf.grep_previewer(opts),
       sorter = sorters.prefilter({ sorter = conf.file_sorter(opts) }),
       attach_mappings = function(prompt_bufnr, map)
-        map("i", "<c-space>", function()
+        map({ "i", "n" }, "<c-space>", function()
           to_live_grep(prompt_bufnr, opts)
         end)
         return true
