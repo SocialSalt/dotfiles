@@ -222,7 +222,7 @@ vim.keymap.set("n", "<leader>en", "Aif err != nil {<CR><CR>}<Esc>ki<TAB><Esc>", 
 
 -- [[ Spellcheck keymap ]]
 vim.keymap.set("n", "<leader>zz", "<CMD>setlocal spell spelllang=en_us<CR>", { desc = "Turn on spell check for current buffer" })
-vim.keymap.set("n", "<leader>zs", "<CMD>setlocal spell!<CR>", { desc = "Turn on spell check for current buffer" })
+vim.keymap.set("n", "<leader>zs", "<CMD>setlocal spell!<CR>", { desc = "Turn off spell check for current buffer" })
 
 -- [[ swap line remap ]]
 vim.keymap.set("n", "<leader>m", "ddp", { desc = "Move current line one line down" })
