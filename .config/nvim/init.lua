@@ -142,9 +142,6 @@ vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = false
 
--- -- Set completeo to have a better completion experience
--- vim.o.completeo = 'menuone,noselect'
-
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -167,8 +164,8 @@ vim.o.termguicolors = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 0
 
--- -- Set completeopt to have a better completion experience
--- vim.o.completeopt = 'menuone,noselect'
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = "menuone,noselect"
 
 -- [[ Import Custom Commands ]]
 require("custom.commands")
@@ -181,8 +178,13 @@ vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "[d", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next [D]iagnostic message" })
+
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
@@ -219,8 +221,8 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set("n", "<leader>en", "Aif err != nil {<CR><CR>}<Esc>ki<TAB><Esc>", { desc = "Insert if err != nil {}" })
 
 -- [[ Spellcheck keymap ]]
-vim.keymap.set("n", "<leader>sc", "<CMD>setlocal spell spelllang=en_us<CR>", { desc = "Turn on spell check for current buffer" })
-vim.keymap.set("n", "<leader>cs", "<CMD>setlocal spell!<CR>", { desc = "Turn on spell check for current buffer" })
+vim.keymap.set("n", "<leader>zz", "<CMD>setlocal spell spelllang=en_us<CR>", { desc = "Turn on spell check for current buffer" })
+vim.keymap.set("n", "<leader>zs", "<CMD>setlocal spell!<CR>", { desc = "Turn on spell check for current buffer" })
 
 -- [[ swap line remap ]]
 vim.keymap.set("n", "<leader>m", "ddp", { desc = "Move current line one line down" })
@@ -520,10 +522,10 @@ require("lazy").setup({
     },
     config = function()
       require("telescope").load_extension("diff")
-      vim.keymap.set("n", "<leader>sC", function()
+      vim.keymap.set("n", "<leader>df", function()
         require("telescope").extensions.diff.diff_files({ hidden = true })
       end, { desc = "Compare 2 files" })
-      vim.keymap.set("n", "<leader>sc", function()
+      vim.keymap.set("n", "<leader>dc", function()
         require("telescope").extensions.diff.diff_current({ hidden = true })
       end, { desc = "Compare file with current" })
     end,
