@@ -863,6 +863,7 @@ require("lazy").setup({
     "saghen/blink.cmp",
     event = "VimEnter",
     version = "1.*",
+    build = "cargo build --release",
     dependencies = {
       -- Snippet Engine
       {
@@ -892,6 +893,7 @@ require("lazy").setup({
       },
       "folke/lazydev.nvim",
     },
+    lazy = false,
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
     opts = {
@@ -917,16 +919,17 @@ require("lazy").setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        -- preset = "default",
+        preset = "default",
 
         -- NOTE: these don't actually take effect because preset = 'default'
         -- they are just here to remind me in case I need it
-        -- ["<Tab>"] = { "show_and_insert", "select_next" },
-        -- ["<S-Tab>"] = { "show_and_insert", "select_prev" },
+        ["<Tab>"] = false,
+        ["<S-Tab>"] = false,
 
         ["<C-space>"] = { "show", "fallback" },
 
         ["<C-n>"] = { "select_next", "fallback" },
+        ["<C-S-N>"] = { "select_prev", "fallback" },
         ["<C-p>"] = { "select_prev", "fallback" },
         -- ["<Right>"] = { "select_next", "fallback" },
         -- ["<Left>"] = { "select_prev", "fallback" },
