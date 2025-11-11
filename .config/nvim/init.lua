@@ -743,7 +743,7 @@ require("lazy").setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
         -- oxlint = {},
         -- eslint_d = {},
         eslint = {},
@@ -860,12 +860,11 @@ require("lazy").setup({
     },
     config = function()
       local lint = require("lint")
-      vim.env.ESLINT_D_PPID = vim.fn.getpid()
       lint.linters_by_ft = {
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
+        javascript = { "eslint" },
+        typescript = { "eslint" },
+        javascriptreact = { "eslint" },
+        typescriptreact = { "eslint" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
