@@ -843,10 +843,10 @@ require("lazy").setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        javascript = { "oxlint", "prettierd" },
-        typescript = { "oxlint", "prettierd" },
-        javascriptreact = { "oxlint", "prettierd" },
-        typescriptreact = { "oxlint", "prettierd" },
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescriptreact = { "prettierd" },
         markdown = { "mdformat" },
       },
     },
@@ -862,10 +862,10 @@ require("lazy").setup({
       local lint = require("lint")
       vim.env.ESLINT_D_PPID = vim.fn.getpid()
       lint.linters_by_ft = {
-        javascript = { "oxlint", "eslint_d" },
-        typescript = { "oxlint", "eslint_d" },
-        javascriptreact = { "oxlint", "eslint_d" },
-        typescriptreact = { "oxlint", "eslint_d" },
+        javascript = { "eslint_d" },
+        typescript = { "eslint_d" },
+        javascriptreact = { "eslint_d" },
+        typescriptreact = { "eslint_d" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
