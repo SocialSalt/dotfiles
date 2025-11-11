@@ -743,8 +743,10 @@ require("lazy").setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
-        eslint_d = {},
+        -- ts_ls = {},
+        -- oxlint = {},
+        -- eslint_d = {},
+        eslint = {},
         prettierd = {},
         --
 
@@ -799,7 +801,6 @@ require("lazy").setup({
       })
     end,
   },
-
   { -- Autoformat
     "stevearc/conform.nvim",
     lazy = false,
@@ -842,10 +843,10 @@ require("lazy").setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescriptreact = { "prettierd" },
+        javascript = { "oxlint", "prettierd" },
+        typescript = { "oxlint", "prettierd" },
+        javascriptreact = { "oxlint", "prettierd" },
+        typescriptreact = { "oxlint", "prettierd" },
         markdown = { "mdformat" },
       },
     },
@@ -854,20 +855,21 @@ require("lazy").setup({
     "mfussenegger/nvim-lint",
     event = {
       "BufReadPre",
+      "BufReadPost",
       "BufNewFile",
     },
     config = function()
       local lint = require("lint")
+      vim.env.ESLINT_D_PPID = vim.fn.getpid()
       lint.linters_by_ft = {
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
+        javascript = { "oxlint", "eslint_d" },
+        typescript = { "oxlint", "eslint_d" },
+        javascriptreact = { "oxlint", "eslint_d" },
+        typescriptreact = { "oxlint", "eslint_d" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-
-      vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         group = lint_augroup,
         callback = function()
           lint.try_lint()
