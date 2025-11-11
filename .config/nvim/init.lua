@@ -243,7 +243,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
   group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
 
@@ -744,8 +744,6 @@ require("lazy").setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
-        -- oxlint = {},
-        -- eslint_d = {},
         eslint = {},
         prettierd = {},
         --
@@ -1010,6 +1008,8 @@ require("lazy").setup({
   { -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    lazy = false,
+    branch = "master",
     opts = {
       ensure_installed = {
         "bash",
