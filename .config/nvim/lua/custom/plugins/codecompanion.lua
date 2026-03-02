@@ -11,28 +11,32 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "gemini_cli",
+          adapter = "gemini",
         },
         inline = {
-          adapter = "gemini_cli",
+          adapter = "gemini",
         },
         cmd = {
-          adapter = "gemini_cli",
+          adapter = "gemini",
         },
       },
-      adapters = {
-        acp = {
-          gemini_cli = function()
-            return require("codecompanion.adapters").extend("gemini_cli", {
-              env = {
-                api_key = "GEMINI_API_KEY",
-              },
-            })
-          end,
-        },
-      },
+      -- adapters = {
+      --   gemini = function()
+      --     return require("codecompanion.adapters").extend("gemini", {
+      --       defaults = {
+      --         auth_method = "gemini-api-key",
+      --       },
+      --       env = {
+      --         GEMINI_API_KEY = "GEMINI_API_KEY",
+      --         api_key = "GEMINI_API_KEY", -- Redundant if GEMINI_API_KEY is used, but good for safety.
+      --       },
+      --     })
+      --   end,
+      -- },
     })
-    vim.keymap.set({ "n" }, "<leader>ch", "<Cmd>CodeCompanionChat<CR>", { desc = "[C]ompanion C[h]at" })
-    vim.keymap.set({ "n" }, "<leader>cc", "<Cmd>CodeCompanionActions<CR>", { desc = "[C]ompanion [C]ompanion Actions" })
+
+    -- Keymaps
+    vim.keymap.set({ "n", "v" }, "<leader>ch", "<Cmd>CodeCompanionChat<CR>", { desc = "[C]ompanion C[h]at" })
+    vim.keymap.set({ "n", "v" }, "<leader>cc", "<Cmd>CodeCompanionActions<CR>", { desc = "[C]ompanion [C]ompanion Actions" })
   end,
 }
