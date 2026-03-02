@@ -1,4 +1,4 @@
-.config/tmux/plugins
+# .config/tmux/plugins
 .config/iterm2
 .DS_Store
 .config/darktable
