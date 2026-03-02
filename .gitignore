@@ -7,3 +7,6 @@
 .config/techcyte-cli
 .config/thefuck
 .config/wandb
+.config/cagent
+.config/configstore
+.config/github-copilot
