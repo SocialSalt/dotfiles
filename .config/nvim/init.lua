@@ -748,8 +748,10 @@ require("lazy").setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
-        eslint = {},
-        prettierd = {},
+        -- eslint = {},
+        -- prettierd = {},
+        oxfmt = {},
+        oxlint = {},
         --
 
         lua_ls = {
@@ -845,10 +847,10 @@ require("lazy").setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescriptreact = { "prettierd" },
+        javascript = { "oxfmt" },
+        typescript = { "oxfmt" },
+        javascriptreact = { "oxfmt" },
+        typescriptreact = { "oxfmt" },
         markdown = { "mdformat" },
       },
     },
@@ -863,10 +865,10 @@ require("lazy").setup({
     config = function()
       local lint = require("lint")
       lint.linters_by_ft = {
-        javascript = { "eslint" },
-        typescript = { "eslint" },
-        javascriptreact = { "eslint" },
-        typescriptreact = { "eslint" },
+        javascript = { "oxlint" },
+        typescript = { "oxlint" },
+        javascriptreact = { "oxlint" },
+        typescriptreact = { "oxlint" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
