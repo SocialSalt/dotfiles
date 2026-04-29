@@ -14,6 +14,11 @@ local lsps = vim
 -- stylua: ignore end
 vim.lsp.enable(lsps)
 
+-- local capabilities = require("blink.cmp").get_lsp_capabilities()
+-- for _, server in pairs(lsps) do
+--   vim.lsp.config[server].setup({ capabilities = capabilities })
+-- end
+
 local telescope_builtin = require("telescope.builtin")
 
 vim.api.nvim_create_autocmd("LspAttach", {

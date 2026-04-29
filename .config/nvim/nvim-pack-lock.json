@@ -10,7 +10,8 @@
     },
     "blink.cmp": {
       "rev": "147c96b976fb5f6f04801fabad83920d5c8817dd",
-      "src": "https://github.com/saghen/blink.cmp"
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": ">=0.0.0"
     },
     "blink.lib": {
       "rev": "dda2666685a5ac3598166577d2e34f1fff6b1637",
@@ -111,7 +112,8 @@
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
-      "src": "https://github.com/nvim-lua/plenary.nvim"
+      "src": "https://github.com/nvim-lua/plenary.nvim",
+      "version": "'master'"
     },
     "telescope-diff.nvim": {
       "rev": "f85d15eddb4dee7fb44beaa42d54afe8f00cf1f0",
@@ -127,7 +129,8 @@
     },
     "telescope.nvim": {
       "rev": "506338434fec5ad19cb1f8d45bf92d66c4917393",
-      "src": "https://github.com/nvim-telescope/telescope.nvim"
+      "src": "https://github.com/nvim-telescope/telescope.nvim",
+      "version": "'master'"
     },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",

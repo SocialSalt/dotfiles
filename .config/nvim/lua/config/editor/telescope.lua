@@ -1,9 +1,9 @@
 vim.pack.add({
-  { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/nvim-lua/plenary.nvim", version = "master" },
+  { src = "https://github.com/nvim-telescope/telescope.nvim", version = "master" },
   { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
   { src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-  { src = "https://github.com/nvim-telescope/telescope.nvim" },
   { src = "https://github.com/jemag/telescope-diff.nvim" },
 }, { confirm = false })
 

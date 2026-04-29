@@ -1,11 +1,23 @@
 vim.pack.add({
   "https://github.com/L3MON4D3/LuaSnip",
   "https://github.com/saghen/blink.lib",
-  "https://github.com/saghen/blink.cmp",
+  { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
 })
 
 local cmp = require("blink.cmp")
-cmp.build():wait(60000)
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == "blink.cmp" and kind == "update" then
+      if not ev.data.active then
+        vim.cmd.packadd("blink.cmp")
+      end
+      -- cmp.build():wait(60000)
+    end
+  end,
+})
+
+-- cmp.build():wait(60000)
 cmp.setup({
   keymap = {
     -- 'default' (recommended) for mappings similar to built-in completions
@@ -82,7 +94,7 @@ cmp.setup({
   --
   -- See :h blink-cmp-config-fuzzy for more information
   -- fuzzy = { implementation = "lua" },
-  fuzzy = { implementation = "rust" },
+  fuzzy = { implementation = "prefer_rust_with_warning" },
 
   -- Shows a signature help window while you type arguments for a function
   signature = { enabled = true },
