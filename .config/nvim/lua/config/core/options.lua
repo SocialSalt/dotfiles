@@ -59,7 +59,7 @@ vim.o.splitbelow = false
 --  and `:help 'listchars'`
 vim.o.list = true
 -- TODO: consider a two space indent leadmultispace
-vim.o.listchars = { tab = "» ", trail = "·", nbsp = "␣", leadmultispace = ">   " }
+-- vim.o.listchars = { tab = "» ", trail = "·", nbsp = "␣", leadmultispace = ">   " }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = "split"

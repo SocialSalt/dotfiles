@@ -1,0 +1,8 @@
+require("config.editor.colorscheme")
+require("config.editor.mini")
+require("config.editor.telescope")
+require("config.editor.harpoon")
+require("config.editor.lualine")
+require("config.editor.codecompanion")
+require("config.editor.misc")
+require("config.editor.autocomplete")
