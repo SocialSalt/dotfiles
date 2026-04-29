@@ -1,8 +1,10 @@
 vim.pack.add({
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
   "https://github.com/tpope/vim-sleuth",
   "https://github.com/numToStr/Comment.nvim",
   "https://github.com/folke/which-key.nvim",
   "https://github.com/folke/lazydev.nvim",
+  "https://github.com/folke/flash.nvim",
   "https://github.com/folke/todo-comments.nvim",
 })
 
@@ -31,3 +33,13 @@ require("lazydev").setup({
 require("todo-comments").setup({
   signs = false,
 })
+
+require('flash').setup({})
+vim.keymap.set({"n", "x", "o"}, "<c-space>", function()
+  require("flash").treesitter({
+    actions = {
+      ["<c-space>"] = "next",
+      ["<M-space>"] = "prev"
+    }
+  })
+end, { desc = "Treesitter incremental selection" })

@@ -1,6 +1,6 @@
 require("config.editor.telescope")
 require("config.editor.git")
-require("config.editor.autocomplete")
+-- require("config.editor.autocomplete")
 require("config.editor.misc")
 require("config.editor.mini")
 require("config.editor.harpoon")

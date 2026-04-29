@@ -1,7 +1,7 @@
 return {
   { treesitter = { "go" }, mason = { "gopls" }, lsp = { "gopls" } },
   { treesitter = { "python" }, mason = { "pyright", "black" }, lsp = { "pyright" } },
-  { treesitter = { "javascript", "typescript", "tsx", "html", "css" }, mason = { "vtsls", "eslint_d", "prettier", "prettierd" }, lsp = { "vtsls" } },
+  { treesitter = { "javascript", "typescript", "tsx", "html", "css" }, mason = { "vtsls", "oxlint", "oxfmt" }, lsp = { "vtsls" } },
   { treesitter = { "bash" }, mason = { "shellcheck", "shfmt", "bash-language-server" }, lsp = { "bashls" } },
   { treesitter = { "rust" }, mason = { "rust-analyzer" }, lsp = { "rust_analyzer" } },
   { treesitter = { "json" }, mason = { "jq", "jsonlint" } },

@@ -4,34 +4,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
 }, { confirm = false, load = true })
 
-require("nvim-treesitter").setup({
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<C-space>",
-      node_incremental = "<C-space>",
-      scope_incremental = "<C-s>",
-      node_decremental = "<M-space>",
-    },
-  },
-})
-
-require("nvim-treesitter-textobjects").setup({
-  select = { lookahead = true },
-  move = {
-    enable = true,
-    set_jumps = true,
-  },
-  swap = {
-    enable = true,
-    swap_next = {
-      ["<leader>a"] = "@parameter.inner",
-    },
-    swap_previous = {
-      ["<leader>A"] = "@parameter.inner",
-    },
-  },
-})
+require("nvim-treesitter").setup({})
 
 require("treesitter-context").setup({
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -52,6 +25,25 @@ require("treesitter-context").setup({
 vim.keymap.set("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true })
+
+require("nvim-treesitter-textobjects").setup({
+  select = {
+    lookahead = true,
+    selection_modes = {
+      ["@parameter.outer"] = "v",
+      ["@function.outer"] = "V",
+    },
+  },
+  include_surrounding_whitespace = false,
+})
+
+-- keymaps
+vim.keymap.set("n", "<leader>a", function()
+  require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
+end)
+vim.keymap.set("n", "<leader>A", function()
+  require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.outer")
+end)
 
 -- stylua: ignore start
 local packages = vim

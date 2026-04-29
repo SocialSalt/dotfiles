@@ -1,6 +1,9 @@
 vim.pack.add({
   { src = "https://github.com/nvim-mini/mini.nvim", version = "main" },
   { src = "https://github.com/nvim-mini/mini.pairs", version = "main" },
+  { src = "https://github.com/nvim-mini/mini.icons", version = "main" },
+  { src = "https://github.com/nvim-mini/mini.snippets", version = "main" },
+  { src = "https://github.com/nvim-mini/mini.completion", version = "main" },
   -- { src = "https://github.com/nvim-mini/mini.statusline", version = "main" },
 })
 require("mini.pairs").setup({})
@@ -17,8 +20,11 @@ require("mini.ai").setup({ n_lines = 500 })
 -- - sr)'  - [S]urround [R]eplace [)] [']
 require("mini.surround").setup()
 
-local mini_trailspace = require("mini.trailspace")
-mini_trailspace.setup()
+require("mini.icons").setup()
+require("mini.snippets").setup()
+require("mini.completion").setup()
+
+require("mini.trailspace").setup()
 vim.keymap.set("n", "<leader>tw", ":lua MiniTrailspace.trim()<CR>:w<CR>", { desc = "Trim trailing whitespace" })
 vim.keymap.set("n", "<leader>tl", ":lua MiniTrailspace.trim_last_lines()<CR>:w<CR>", { desc = "Trim trailing empty lines" })
 
