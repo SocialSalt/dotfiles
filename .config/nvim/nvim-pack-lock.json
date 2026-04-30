@@ -56,13 +56,16 @@
     },
     "mini.completion": {
       "rev": "667d94669be66043123cac44e7c5d65a31657732",
-      "src": "https://github.com/nvim-mini/mini.completion",
-      "version": "'main'"
+      "src": "https://github.com/nvim-mini/mini.completion"
     },
     "mini.icons": {
       "rev": "bac6317300e205335df425296570d84322730067",
       "src": "https://github.com/nvim-mini/mini.icons",
       "version": "'main'"
+    },
+    "mini.misc": {
+      "rev": "c72c90e083bcf24bfb2827d63b4752e414023f3e",
+      "src": "https://github.com/nvim-mini/mini.misc"
     },
     "mini.nvim": {
       "rev": "be81509b7160aa02264a59789164a2e1c4a6750a",

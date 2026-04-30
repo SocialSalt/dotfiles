@@ -14,6 +14,16 @@ local lsps = vim
 -- stylua: ignore end
 vim.lsp.enable(lsps)
 
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
+})
+
 -- local capabilities = require("blink.cmp").get_lsp_capabilities()
 -- for _, server in pairs(lsps) do
 --   vim.lsp.config[server].setup({ capabilities = capabilities })
@@ -39,7 +49,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- When you move your cursor, the highlights will be cleared (the second autocommand).
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client.server_capabilities.documentHighlightProvider then
-      local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+      local highlight_augroup = vim.api.nvim_create_augroup("socialsalt-lsp-highlight", { clear = false })
+
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         buffer = event.buf,
         group = highlight_augroup,
@@ -53,10 +64,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
 
       vim.api.nvim_create_autocmd("LspDetach", {
-        group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+        group = vim.api.nvim_create_augroup("socialsalt-lsp-detach", { clear = true }),
         callback = function(event2)
           vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+          vim.api.nvim_clear_autocmds({ group = "socialsalt-lsp-highlight", buffer = event2.buf })
         end,
       })
     end

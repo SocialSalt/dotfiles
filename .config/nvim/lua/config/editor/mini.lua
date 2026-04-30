@@ -4,8 +4,13 @@ vim.pack.add({
   { src = "https://github.com/nvim-mini/mini.icons", version = "main" },
   { src = "https://github.com/nvim-mini/mini.snippets", version = "main" },
   { src = "https://github.com/nvim-mini/mini.completion", version = "main" },
+  { src = "https://github.com/nvim-mini/mini.misc" },
   -- { src = "https://github.com/nvim-mini/mini.statusline", version = "main" },
 })
+local misc = require("mini.misc")
+local on_event = function(ev, f)
+  misc.safely("event:" .. ev, f)
+end
 require("mini.pairs").setup({})
 -- Better Around/Inside textobjects
 -- Examples:
@@ -22,7 +27,11 @@ require("mini.surround").setup()
 
 require("mini.icons").setup()
 require("mini.snippets").setup()
-require("mini.completion").setup()
+
+on_event("InsertEnter", function()
+  vim.pack.add({ "https://github.com/nvim-mini/mini.completion" })
+  require("mini.completion").setup()
+end)
 
 require("mini.trailspace").setup()
 vim.keymap.set("n", "<leader>tw", ":lua MiniTrailspace.trim()<CR>:w<CR>", { desc = "Trim trailing whitespace" })
