@@ -9,3 +9,5 @@
 .config/cagent
 .config/configstore
 .config/github-copilot
+.config/nvim/.vim
+.config/crossnote

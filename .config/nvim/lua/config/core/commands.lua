@@ -42,6 +42,10 @@ vim.api.nvim_create_user_command("E", function()
   vim.api.nvim_command("Explore")
 end, {})
 
+vim.api.nvim_create_user_command("LspInfo", function()
+  vim.api.nvim_command("checkhealth vim.lsp")
+end, {})
+
 -- vim.api.nvim_create_autocmd("BufLeave", {
 --   desc = "Autosave buffer when leaving buffer window",
 --   group = vim.api.nvim_create_augroup("autosave", { clear = true }),
