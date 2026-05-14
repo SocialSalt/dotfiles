@@ -9,14 +9,15 @@ vim.pack.add({
 }, { confirm = false, load = true })
 
 -- require("dap").setup()
-
+dap = require("dap")
 vim.keymap.set("n", "<F5>", require("dap").continue, { desc = "Debug: Start/Continue" })
 vim.keymap.set("n", "<F1>", require("dap").step_into, { desc = "Debug: Step Into" })
 vim.keymap.set("n", "<F2>", require("dap").step_over, { desc = "Debug: Step Over" })
 vim.keymap.set("n", "<F3>", require("dap").step_out, { desc = "Debug: Step Out" })
 vim.keymap.set("n", "<leader>b", require("dap").toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
 vim.keymap.set("n", "<leader>b", function()
-  dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+  -- dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+  dap.toggle_breakpoint()
 end, { desc = "Debug: Set Breakpoint" })
 
 require("dapui").setup({

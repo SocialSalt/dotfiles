@@ -26,7 +26,7 @@ require("mini.ai").setup({ n_lines = 500 })
 require("mini.surround").setup()
 
 require("mini.icons").setup()
-require("mini.snippets").setup()
+-- require("mini.snippets").setup()
 
 on_event("InsertEnter", function()
   vim.pack.add({ "https://github.com/nvim-mini/mini.completion" })
