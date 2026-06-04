@@ -22,9 +22,9 @@ require("treesitter-context").setup({
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 })
 
-vim.keymap.set("n", "[c", function()
+vim.keymap.set("n", "[s", function()
   require("treesitter-context").go_to_context(vim.v.count1)
-end, { silent = true })
+end, { silent = true, desc = "go to start of containing scope" })
 
 require("nvim-treesitter-textobjects").setup({
   select = {
@@ -40,10 +40,10 @@ require("nvim-treesitter-textobjects").setup({
 -- keymaps
 vim.keymap.set("n", "<leader>a", function()
   require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
-end)
+end, { desc = "swap with next argumen" })
 vim.keymap.set("n", "<leader>A", function()
   require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
-end)
+end, { desc = "swap with previous argument" })
 
 -- stylua: ignore start
 local packages = vim

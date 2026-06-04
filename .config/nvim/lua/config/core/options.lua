@@ -77,6 +77,6 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 0
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = "menuone,noselect,fuzzy,nosort"
 
 vim.o.hlsearch = true
