@@ -6,6 +6,12 @@ vim.pack.add({
   { src = "https://github.com/nvim-mini/mini.misc" },
   -- { src = "https://github.com/nvim-mini/mini.statusline", version = "main" },
 })
+vim.schedule(function()
+  vim.pack.add({
+    { src = "https://github.com/nvim-mini/mini.completion", version = "main", load = false },
+  })
+end)
+
 local misc = require("mini.misc")
 local on_event = function(ev, f)
   misc.safely("event:" .. ev, f)
@@ -28,7 +34,7 @@ require("mini.icons").setup()
 -- require("mini.snippets").setup()
 
 on_event("InsertEnter", function()
-  vim.pack.add({ src = "https://github.com/nvim-mini/mini.completion", version = "main" })
+  vim.pack.add({ { src = "https://github.com/nvim-mini/mini.completion", version = "main" } })
   require("mini.completion").setup({})
   vim.lsp.config("*", { capabilities = require("mini.completion").get_lsp_capabilities() })
 end)

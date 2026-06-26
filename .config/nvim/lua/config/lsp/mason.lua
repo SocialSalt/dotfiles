@@ -22,12 +22,6 @@ local function install_wanted()
       if not pkg:is_installed() then
         vim.api.nvim_echo({ { "Installing " .. name } }, false, {})
         pkg:install()
-      else
-        local installed_version = pkg:get_installed_version() or ""
-        local latest_version = pkg:get_latest_version()
-        if latest_version and installed_version ~= latest_version then
-          vim.api.nvim_echo({ { string.format("New version available: %s (%s → %s)", name, installed_version, latest_version) } }, false, {})
-        end
       end
     end
   end
