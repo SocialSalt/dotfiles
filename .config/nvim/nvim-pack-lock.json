@@ -56,7 +56,8 @@
     },
     "mini.completion": {
       "rev": "667d94669be66043123cac44e7c5d65a31657732",
-      "src": "https://github.com/nvim-mini/mini.completion"
+      "src": "https://github.com/nvim-mini/mini.completion",
+      "version": "'main'"
     },
     "mini.icons": {
       "rev": "bac6317300e205335df425296570d84322730067",
@@ -85,6 +86,10 @@
     "nightfox.nvim": {
       "rev": "ba47d4b4c5ec308718641ba7402c143836f35aa9",
       "src": "https://github.com/EdenEast/nightfox.nvim"
+    },
+    "nvim-autopairs": {
+      "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
+      "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-dap": {
       "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",

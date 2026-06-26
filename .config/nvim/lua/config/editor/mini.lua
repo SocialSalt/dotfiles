@@ -3,7 +3,6 @@ vim.pack.add({
   { src = "https://github.com/nvim-mini/mini.pairs", version = "main" },
   { src = "https://github.com/nvim-mini/mini.icons", version = "main" },
   { src = "https://github.com/nvim-mini/mini.snippets", version = "main" },
-  { src = "https://github.com/nvim-mini/mini.completion", version = "main" },
   { src = "https://github.com/nvim-mini/mini.misc" },
   -- { src = "https://github.com/nvim-mini/mini.statusline", version = "main" },
 })
@@ -11,7 +10,7 @@ local misc = require("mini.misc")
 local on_event = function(ev, f)
   misc.safely("event:" .. ev, f)
 end
-require("mini.pairs").setup({})
+-- require("mini.pairs").setup({})
 -- Better Around/Inside textobjects
 -- Examples:
 --  - va)  - [V]isually select [A]round [)]paren
@@ -29,8 +28,9 @@ require("mini.icons").setup()
 -- require("mini.snippets").setup()
 
 on_event("InsertEnter", function()
-  vim.pack.add({ "https://github.com/nvim-mini/mini.completion" })
-  require("mini.completion").setup()
+  vim.pack.add({ src = "https://github.com/nvim-mini/mini.completion", version = "main" })
+  require("mini.completion").setup({})
+  vim.lsp.config("*", { capabilities = require("mini.completion").get_lsp_capabilities() })
 end)
 
 require("mini.trailspace").setup()

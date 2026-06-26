@@ -7,6 +7,12 @@ vim.pack.add({
   "https://github.com/folke/flash.nvim",
   "https://github.com/folke/todo-comments.nvim",
 })
+vim.schedule(function()
+  vim.pack.add({
+    { src = "https://github.com/windwp/nvim-autopairs", load = false },
+  })
+end)
+
 local misc = require("mini.misc")
 local later = function(f)
   misc.safely("later", f)
@@ -54,3 +60,11 @@ vim.keymap.set({ "n", "x", "o" }, "<c-space>", function()
     },
   })
 end, { desc = "Treesitter incremental selection" })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  once = true,
+  callback = function()
+    vim.cmd.packadd({ "https://github.com/windwp/nvim-autopairs" })
+    require("nvim-autopairs").setup()
+  end,
+})
