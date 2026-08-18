@@ -10,6 +10,7 @@ return {
   { treesitter = { "yaml" }, mason = { "yq", "yamllint", "yaml-language-server", "actionlint" }, lsp = { "yamlls" } },
   { treesitter = { "terraform" }, mason = { "terraform-ls" }, lsp = { "terraformls" } },
   { treesitter = { "cpp", "c" }, mason = { "clangd" }, lsp = { "clangd" } },
+  { treesitter = { "nix" }, mason = { "alejandra" } },
   { mason = { "markdownlint", "markdown-oxide" }, lsp = { "markdown_oxide" } },
   { mason = { "docker-language-server" }, lsp = { "docker_language_server" } },
 }

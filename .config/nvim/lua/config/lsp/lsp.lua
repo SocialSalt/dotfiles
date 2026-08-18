@@ -97,5 +97,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     set_keymap("n", "<leader>k", vim.lsp.buf.hover, "Hover Documentation")
     set_keymap("n", "K", vim.lsp.buf.hover, "Hover (alt)")
     set_keymap("n", "gD", vim.lsp.buf.declaration, "Goto Definition")
+
+    if client.name == "terraformls" then
+      client.server_capabilities.semanticTokensProvider = false
+    end
   end,
 })
