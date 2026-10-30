@@ -46,17 +46,12 @@ vim.keymap.set("n", "<leader>tg", require("dap-go").debug_test, { desc = "dap [T
 -- Install python specific config
 local dap_python = require("dap-python")
 
--- Setup debugpy adapter: prefer `uv` (which runs `uv run --with debugpy`), then Mason's debugpy, then python3
-local uv_bin = vim.fn.exepath("uv") ~= "" and "uv" or vim.fn.expand("~/.local/bin/uv")
-if vim.fn.executable(uv_bin) == 1 then
-  dap_python.setup(uv_bin)
+-- Setup debugpy adapter: prefer Mason's debugpy venv, then system python3
+local mason_debugpy = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
+if vim.fn.executable(mason_debugpy) == 1 then
+  dap_python.setup(mason_debugpy)
 else
-  local mason_debugpy = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
-  if vim.fn.executable(mason_debugpy) == 1 then
-    dap_python.setup(mason_debugpy)
-  else
-    dap_python.setup("python3")
-  end
+  dap_python.setup("python3")
 end
 
 dap_python.test_runner = "pytest"

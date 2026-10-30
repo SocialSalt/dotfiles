@@ -60,6 +60,24 @@ vim.lsp.config("gopls", {
   },
 })
 
+vim.lsp.config("basedpyright", {
+  settings = {
+    basedpyright = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "openFilesOnly",
+        typeCheckingMode = "standard",
+      },
+    },
+    python = {
+      pythonPath = vim.fn.filereadable(".venv/bin/python") == 1 and ".venv/bin/python" or "python3",
+    },
+  },
+})
+
+vim.lsp.config("ruff", {})
+
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
@@ -155,6 +173,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     if client.name == "terraformls" then
       client.server_capabilities.semanticTokensProvider = false
+    end
+
+    if client.name == "ruff" then
+      -- Disable hover in favor of basedpyright
+      client.server_capabilities.hoverProvider = false
     end
   end,
 })

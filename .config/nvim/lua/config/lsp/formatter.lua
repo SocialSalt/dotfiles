@@ -15,7 +15,7 @@ later(function()
       typescript = { "oxfmt" },
       typescriptreact = { "oxfmt" },
       yaml = { "yq" },
-      python = { "black" },
+      python = { "ruff_organize_imports", "ruff_format" },
       javascript = { "oxfmt" },
       javascriptreact = { "oxfmt" },
     },
