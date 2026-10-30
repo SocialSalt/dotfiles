@@ -45,6 +45,51 @@ vim.keymap.set("n", "<leader>tg", require("dap-go").debug_test, { desc = "dap [T
 
 -- Install python specific config
 local dap_python = require("dap-python")
-dap_python.setup("python")
+
+-- Setup debugpy adapter: prefer `uv` (which runs `uv run --with debugpy`), then Mason's debugpy, then python3
+local uv_bin = vim.fn.exepath("uv") ~= "" and "uv" or vim.fn.expand("~/.local/bin/uv")
+if vim.fn.executable(uv_bin) == 1 then
+  dap_python.setup(uv_bin)
+else
+  local mason_debugpy = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
+  if vim.fn.executable(mason_debugpy) == 1 then
+    dap_python.setup(mason_debugpy)
+  else
+    dap_python.setup("python3")
+  end
+end
+
 dap_python.test_runner = "pytest"
+
+-- Resolve the local virtual environment (e.g. .venv created by uv)
+dap_python.resolve_python = function()
+  -- 1. Check if an environment is already active in the shell
+  if vim.env.VIRTUAL_ENV then
+    local path = vim.env.VIRTUAL_ENV .. "/bin/python"
+    if vim.fn.executable(path) == 1 then
+      return path
+    end
+  end
+
+  -- 2. Search upward from the current buffer's file location for .venv
+  local current_file = vim.api.nvim_buf_get_name(0)
+  local search_dir = current_file ~= "" and vim.fs.dirname(current_file) or vim.fn.getcwd()
+  local venv = vim.fs.find(".venv", { upward = true, path = search_dir })[1]
+  if venv then
+    local path = venv .. "/bin/python"
+    if vim.fn.executable(path) == 1 then
+      return path
+    end
+  end
+
+  -- 3. Check current working directory
+  local cwd_path = vim.fn.getcwd() .. "/.venv/bin/python"
+  if vim.fn.executable(cwd_path) == 1 then
+    return cwd_path
+  end
+
+  -- 4. Fallback to system python3
+  return vim.fn.exepath("python3") ~= "" and vim.fn.exepath("python3") or "python3"
+end
+
 vim.keymap.set("n", "<leader>tp", dap_python.test_method, { desc = "dap [T]est [P]ython function" })
