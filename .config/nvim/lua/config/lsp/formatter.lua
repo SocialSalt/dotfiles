@@ -4,30 +4,27 @@ local misc = require("mini.misc")
 local later = function(f)
   misc.safely("later", f)
 end
-local on_event = function(ev, f)
-  misc.safely("event:" .. ev, f)
-end
 
-on_event("BufWritePre", function()
+later(function()
   require("conform").setup({
     formatters_by_ft = {
       lua = { "stylua" },
       json = { "jq" },
-      go = { "gofmt" },
+      go = { "goimports", "gofumpt" },
       bash = { "shfmt" },
-      typescript = { "oxlint", "oxfmt" },
-      typescriptreact = { "oxlint", "oxfmt" },
+      typescript = { "oxfmt" },
+      typescriptreact = { "oxfmt" },
       yaml = { "yq" },
       python = { "black" },
       javascript = { "oxfmt" },
       javascriptreact = { "oxfmt" },
     },
 
-    format_after_save = function(bufnr)
+    format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
         return
       end
-      return { timeout_ms = 500, lsp_format = "fallback" }
+      return { timeout_ms = 500, lsp_format = "never" }
     end,
   })
 end)
