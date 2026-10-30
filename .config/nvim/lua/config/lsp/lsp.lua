@@ -24,6 +24,15 @@ vim.lsp.config("lua_ls", {
   },
 })
 
+vim.lsp.config("nil", {
+  settings = {
+    formatting = {
+      command = { "nixfmt" },
+    },
+  },
+})
+vim.lsp.enable("nil")
+
 -- local capabilities = require("blink.cmp").get_lsp_capabilities()
 -- for _, server in pairs(lsps) do
 --   vim.lsp.config[server].setup({ capabilities = capabilities })
