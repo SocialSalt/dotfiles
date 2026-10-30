@@ -14,6 +14,52 @@ local lsps = vim
 -- stylua: ignore end
 vim.lsp.enable(lsps)
 
+vim.lsp.config("vtsls", {
+  settings = {
+    typescript = {
+      tsserver = {
+        maxTsServerMemory = 8192,
+      },
+      suggest = {
+        completeFunctionCalls = true,
+      },
+    },
+    javascript = {
+      tsserver = {
+        maxTsServerMemory = 8192,
+      },
+    },
+    vtsls = {
+      autoUseWorkspaceTsdk = true,
+      experimental = {
+        completion = {
+          enableServerSideFuzzyMatch = true,
+        },
+      },
+    },
+  },
+})
+
+vim.lsp.config("gopls", {
+  cmd = { "gopls", "-remote=auto" },
+  settings = {
+    gopls = {
+      directoryFilters = {
+        "-.git",
+        "-.vscode",
+        "-.idea",
+        "-node_modules",
+        "-vendor",
+      },
+      analyses = {
+        unusedparams = true,
+        fieldalignment = false,
+      },
+      staticcheck = false,
+    },
+  },
+})
+
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
