@@ -38,6 +38,34 @@ require("nvim-treesitter-textobjects").setup({
 })
 
 -- keymaps
+vim.keymap.set({ "n", "o" }, "<c-space>", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    local select = require("vim.treesitter._select")
+    select.select_child(1)
+    if vim.v.count1 > 1 then
+      select.select_parent(vim.v.count1 - 1)
+    end
+  else
+    vim.lsp.buf.selection_range(vim.v.count1)
+  end
+end, { desc = "Init treesitter incremental selection" })
+
+vim.keymap.set("x", "<c-space>", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require("vim.treesitter._select").select_parent(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(vim.v.count1)
+  end
+end, { desc = "Expand treesitter selection" })
+
+vim.keymap.set("x", "<M-space>", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require("vim.treesitter._select").select_child(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(-vim.v.count1)
+  end
+end, { desc = "Shrink treesitter selection" })
+
 vim.keymap.set("n", "<leader>a", function()
   require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
 end, { desc = "swap with next argumen" })
