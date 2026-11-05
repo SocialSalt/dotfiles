@@ -4,7 +4,6 @@ vim.pack.add({
   "https://github.com/numToStr/Comment.nvim",
   "https://github.com/folke/which-key.nvim",
   "https://github.com/folke/lazydev.nvim",
-  "https://github.com/folke/flash.nvim",
   "https://github.com/folke/todo-comments.nvim",
 })
 vim.schedule(function()
@@ -50,16 +49,6 @@ later(function()
     signs = false,
   })
 end)
-
-require("flash").setup({})
-vim.keymap.set({ "n", "x", "o" }, "<c-space>", function()
-  require("flash").treesitter({
-    actions = {
-      ["<c-space>"] = "next",
-      ["<M-space>"] = "prev",
-    },
-  })
-end, { desc = "Treesitter incremental selection" })
 
 vim.api.nvim_create_autocmd("InsertEnter", {
   once = true,
